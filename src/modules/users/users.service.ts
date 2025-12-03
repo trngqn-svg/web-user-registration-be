@@ -14,10 +14,12 @@ export class UsersService{
 
     const hashed = await bcrypt.hash(password, 10);
 
-    return this.userRepository.create({
+    this.userRepository.create({
       email,
       password: hashed,
     });
+
+    return { message: "Registed successful" };
   }
 
   async login(email: string, password: string){
